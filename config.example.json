@@ -1,0 +1,20 @@
+{
+  "github": {
+    "token_file": "token.txt",
+    "use_ssh": true
+  },
+  "backup": {
+    "output_folder": "repositories",
+    "backup_gists": true,
+    "verbose": false,
+    "max_retries": 3,
+    "retry_delay_seconds": 5,
+    "log_file": ""
+  },
+  "filters": {
+    "exclude_forks": false,
+    "exclude_archived": false,
+    "include_only": [],
+    "exclude": []
+  }
+}
