@@ -13,7 +13,7 @@ NC='\033[0m' # No Color
 
 # Configuration
 ENV_NAME=".venv"
-PYTHON_VERSION="3.9"
+PYTHON_VERSION="3.11"
 
 echo "=================================="
 echo "GitHub Backup - Environment Setup"
@@ -68,7 +68,8 @@ if [ -d "$ENV_NAME" ]; then
     rm -rf "$ENV_NAME"
 fi
 
-uv venv "$ENV_NAME" --python "$PYTHON_VERSION"
+uv python install "$PYTHON_VERSION"
+uv venv "$ENV_NAME" --python "$PYTHON_VERSION" --python-preference managed
 
 # Check if virtual environment was created successfully
 if [ ! -d "$ENV_NAME" ]; then
@@ -84,7 +85,7 @@ source "$ENV_NAME/bin/activate"
 
 # Install required packages using uv
 print_info "Installing required packages with uv..."
-uv pip install -r requirements.txt
+uv pip install --python "$ENV_NAME/bin/python" -r requirements.txt
 
 # Verify installation
 print_info "Verifying installation..."
